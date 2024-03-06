@@ -44,7 +44,7 @@ const RangeOption: React.FC<Prop> = ({ range, onChange, onRemove }) => {
     }
     let isOutOfOrder = false
     try {
-      new RegExp(`[${fromRef.current}-${toRef.current}]`)
+      new RegExp(`${fromRef.current.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&')}-${toRef.current.replace(/[-[\]/{}()*+?.\\^$|]/g, '\\$&')}`)
     } catch (error) {
       isOutOfOrder = true
     }
